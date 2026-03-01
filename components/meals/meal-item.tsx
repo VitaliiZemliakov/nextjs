@@ -9,7 +9,13 @@ export interface MealItemProps {
     image: string;
     summary: string;
     creator: string;
-    id?: string;
+    id?: string | number;
+}
+
+export interface Meal extends MealItemProps {
+    id: number;
+    instructions: string;
+    creator_email: string
 }
 
 export default function MealItem({

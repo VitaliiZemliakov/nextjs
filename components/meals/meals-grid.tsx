@@ -1,4 +1,5 @@
 import MealItem, { MealItemProps } from "./meal-item";
+import classes from "./meals-grid.module.css";
 
 interface MealsGridProps {
     meals: MealItemProps[];
@@ -6,7 +7,7 @@ interface MealsGridProps {
 
 const MealsGrid = ({ meals }: MealsGridProps) => {
     return (
-        <ul>
+        <ul className={classes.meals}>
             {meals?.map((meal) => (
                 <li key={meal.id}>
                     <MealItem {...meal} />
