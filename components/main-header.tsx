@@ -11,7 +11,7 @@ export default function MainHeader() {
 
     return (
         <header
-            className={`${classes.header} absolute top-0 flex w-full justify-between`}
+            className={`${classes.header} ${classes.main_header} absolute top-0 flex w-full justify-between main-header`}
         >
             <Link className={classes.logo} href="/">
                 <Image src={logoImg} alt="A plate with food on it" priority />
