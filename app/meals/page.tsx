@@ -2,15 +2,17 @@ import Link from "next/link";
 import classes from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/meals";
-import { Suspense } from "react";
+import { Suspense, use } from "react";
 import MealsLoading from "./loading";
+import { Meal } from "@/components/meals/meal-item";
 
-async function Meal() {
-    const meals = await getMeals();
+function MealsSuspended({ mealsPromise }: { mealsPromise: Promise<Meal[]> }) {
+    const meals = use(mealsPromise)
     return <MealsGrid meals={meals} />;
 }
 
-export default async function MealsPage() {
+export default function MealsPage() {
+        const mealsPromise = getMeals()
     return (
         <>
             <header className={classes.header}>
@@ -28,7 +30,7 @@ export default async function MealsPage() {
             </header>
             <main className={classes.main}>
                 <Suspense fallback={<MealsLoading />}>
-                    <Meal />
+                    <MealsSuspended mealsPromise={mealsPromise} />
                 </Suspense>
             </main>
         </>
