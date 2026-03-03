@@ -1,25 +1,45 @@
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 
-// interface FormDataEntries {
-//     [key: string]: string | File;
-// }
+type Meal = {
+    title: string;
+    summary: string;
+    instructions: string;
+    image: File;
+    creator: string;
+    creator_email: string;
+};
+
+export function getString(key: string, formdata: FormData): string {
+    const value = formdata.get(key);
+    if (typeof value !== "string") {
+        throw new Error(`${key} is required`);
+    }
+    return value;
+}
+
+export function getFile(key: string, formdata: FormData): File {
+    const value = formdata.get(key);
+    if (!(value instanceof File) || value.size === 0) {
+        throw new Error(`${key} is required`);
+    }
+    return value;
+}
 
 export default function ShareMealPage() {
     async function shareMeal(formdata: FormData) {
         "use server";
-        console.log(formdata);
 
-        const meal: Record<string, FormDataEntryValue> = {};
+        const meal: Meal = {
+            title: getString("title", formdata),
+            summary: getString("summary", formdata),
+            instructions: getString("instructions", formdata),
+            image: getFile("image", formdata),
+            creator: getString("name", formdata),
+            creator_email: getString("email", formdata),
+        };
 
-        for (const [key, value] of formdata.entries()) {
-            // console.log(key, value);
-            meal[key] = value;
-
-            console.log(meal);
-        }
-
-        //to do
+        return meal;
     }
 
     return (
