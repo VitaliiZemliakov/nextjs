@@ -1,8 +1,24 @@
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 
+// interface FormDataEntries {
+//     [key: string]: string | File;
+// }
+
 export default function ShareMealPage() {
-    function shareMeal(data: FormData) {
+    async function shareMeal(formdata: FormData) {
+        "use server";
+        console.log(formdata);
+
+        const meal: Record<string, FormDataEntryValue> = {};
+
+        for (const [key, value] of formdata.entries()) {
+            // console.log(key, value);
+            meal[key] = value;
+
+            console.log(meal);
+        }
+
         //to do
     }
 
@@ -54,7 +70,7 @@ export default function ShareMealPage() {
                             required
                         ></textarea>
                     </p>
-                    <ImagePicker />
+                    <ImagePicker name="image" label="Your Meal Image" />
                     <p className={classes.actions}>
                         <button type="submit">Share Meal</button>
                     </p>
