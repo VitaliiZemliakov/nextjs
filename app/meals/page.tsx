@@ -6,13 +6,13 @@ import { Suspense, use } from "react";
 import MealsLoading from "./loading";
 import { Meal } from "@/components/meals/meal-item";
 
-function MealsSuspended({ mealsPromise }: { mealsPromise: Promise<Meal[]> }) {
-    const meals = use(mealsPromise)
+function MealsComponent({ mealsPromise }: { mealsPromise: Promise<Meal[]> }) {
+    const meals = use(mealsPromise);
     return <MealsGrid meals={meals} />;
 }
 
 export default function MealsPage() {
-        const mealsPromise = getMeals()
+    const mealsPromise = getMeals();
     return (
         <>
             <header className={classes.header}>
@@ -30,7 +30,7 @@ export default function MealsPage() {
             </header>
             <main className={classes.main}>
                 <Suspense fallback={<MealsLoading />}>
-                    <MealsSuspended mealsPromise={mealsPromise} />
+                    <MealsComponent mealsPromise={mealsPromise} />
                 </Suspense>
             </main>
         </>
