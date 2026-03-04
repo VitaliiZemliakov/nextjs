@@ -13,7 +13,7 @@ export default async function MealDetailsPage({
     const meal = getMeal(mealSlug);
 
     if (!meal) {
-        notFound()
+        notFound();
     }
 
     const { instructions, title, creator_email, summary, creator } = meal;
