@@ -55,45 +55,73 @@ function TextArea({
     );
 }
 
+const shareMealData = [
+    {
+        label: "Your name",
+        id: "name",
+        name: "name",
+        type: "text",
+        required: true,
+    },
+    {
+        label: "Your email",
+        id: "email",
+        name: "email",
+        type: "email",
+        required: true,
+    },
+    {
+        label: "Meal Title",
+        id: "title",
+        name: "title",
+        type: "text",
+        required: true,
+    },
+    {
+        label: "Short Summary",
+        id: "summary",
+        name: "summary",
+        type: "text",
+        required: true,
+    },
+    {
+        label: "Instructions",
+        id: "instructions",
+        name: "instructions",
+        rows: 10,
+        required: true,
+    },
+];
+
 function ShareMealForm() {
     return (
         <form className={classes.form} action={shareMeal}>
-            <InputField
-                label="Your name"
-                id="name"
-                name="name"
-                type="text"
-                required={true}
-            />
-            <InputField
-                label="Your email"
-                id="email"
-                name="email"
-                type="email"
-                required={true}
-            />
-            <InputField
-                label="Meal Title"
-                id="title"
-                name="title"
-                type="text"
-                required={true}
-            />
-            <InputField
-                label="Short Summary"
-                id="summary"
-                name="summary"
-                type="text"
-                required={true}
-            />
-
-            <TextArea
-                label="Instructions"
-                id="instructions"
-                name="instructions"
-                rows={10}
-                required={true}
-            />
+            {shareMealData.map((field) => {
+                if (field.type === "text" || field.type === "email") {
+                    return (
+                        <InputField
+                            key={field.id}
+                            label={field.label}
+                            id={field.id}
+                            name={field.name}
+                            type={field.type}
+                            required={field.required}
+                        />
+                    );
+                } else if (field.type === "textarea") {
+                    return (
+                        <TextArea
+                            key={field.id}
+                            label={field.label}
+                            id={field.id}
+                            name={field.name}
+                            rows={field.rows}
+                            required={field.required}
+                        />
+                    );
+                }
+                return null;
+            })}
             <ImagePicker name="image" label="Your Meal Image" />
             <p className={classes.actions}>
                 <button type="submit">Share Meal</button>
