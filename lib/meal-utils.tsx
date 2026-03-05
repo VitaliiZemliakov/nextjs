@@ -24,6 +24,20 @@ export function getFile(key: string, formdata: FormData): File {
 }
 
 export function extractMeal(formdata: FormData): MealType {
+    // const dataToValidate = [
+    //     "title",
+    //     "summary",
+    //     "instructions",
+    //     "creator",
+    //     "creator_email",
+    // ];
+
+    // dataToValidate.every((key) => {
+    //     if (isInvalidText(getString(key, formdata))) {
+    //         throw new Error(`${key} is required`);
+    //     }
+    // });
+
     return {
         title: getString("title", formdata),
         summary: getString("summary", formdata),
@@ -32,4 +46,8 @@ export function extractMeal(formdata: FormData): MealType {
         creator: getString("name", formdata),
         creator_email: getString("email", formdata),
     };
+}
+
+export function isInvalidText(text: string): boolean {
+    return !text || text.trim() === "";
 }
