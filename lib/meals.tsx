@@ -9,13 +9,14 @@ import { MealType } from "./meal-utils";
 const db = sql("meals.db");
 
 export async function getMeals(): Promise<Meal[]> {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    // throw new Error('sorry, we have to stop you here')
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     return db.prepare("SELECT * FROM meals").all() as Meal[];
 }
 
-export function getMeal(slug: string) {
-    //  await new Promise((resolve) => setTimeout(resolve, 4000));
+export async function getMeal(slug: string) {
+     await new Promise((resolve) => setTimeout(resolve, 2000));
+
     return db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug) as Meal;
 }
 

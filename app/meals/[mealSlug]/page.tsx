@@ -10,7 +10,7 @@ export default async function MealDetailsPage({
     params: Promise<{ mealSlug: string }>;
 }) {
     const mealSlug = (await params).mealSlug;
-    const meal = getMeal(mealSlug);
+    const meal = await getMeal(mealSlug);
 
     if (!meal) {
         notFound();

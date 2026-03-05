@@ -2,7 +2,7 @@ import Link from "next/link";
 import classes from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/meals";
-import { Suspense, use } from "react";
+import { JSX, Suspense, use } from "react";
 import MealsLoading from "./loading";
 import { Meal } from "@/components/meals/meal-item";
 
@@ -11,7 +11,7 @@ function MealsComponent({ mealsPromise }: { mealsPromise: Promise<Meal[]> }) {
     return <MealsGrid meals={meals} />;
 }
 
-export default function MealsPage() {
+export default function MealsPage(): JSX.Element {
     const mealsPromise = getMeals();
     return (
         <>
