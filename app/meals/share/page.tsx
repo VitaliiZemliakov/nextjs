@@ -1,8 +1,7 @@
-"use client";
-
 import ImagePicker from "@/components/meals/image-picker";
 import classes from "./page.module.css";
 import { shareMeal } from "@/lib/actions";
+import MealsFormSubmit from "@/components/meals/meals-form-submit";
 
 interface InputFieldProps {
     label: string;
@@ -86,7 +85,6 @@ function ShareMealForm() {
                 type="text"
                 required={true}
             />
-
             <TextArea
                 label="Instructions"
                 id="instructions"
@@ -96,7 +94,7 @@ function ShareMealForm() {
             />
             <ImagePicker name="image" label="Your Meal Image" />
             <p className={classes.actions}>
-                <button type="submit">Share Meal</button>
+                <MealsFormSubmit />
             </p>
         </form>
     );
