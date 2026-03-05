@@ -6,11 +6,11 @@ import {
     isInvalidText
 } from "./meal-utils";
 import { saveMeal } from "./meals";
+import { useActionState } from 'react'
 
 export async function shareMeal(formdata: FormData): Promise<void> {
     const meal = extractMeal(formdata);
-
-    console.log(meal);
+    useActionState()
 
     for (const item in meal) {
         if (item === "image") {
@@ -23,8 +23,6 @@ export async function shareMeal(formdata: FormData): Promise<void> {
             throw new Error(`${item} is required`);
         }
     }
-
-    console.log(meal);
 
     await saveMeal(meal);
 

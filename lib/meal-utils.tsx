@@ -24,20 +24,6 @@ export function getFile(key: string, formdata: FormData): File {
 }
 
 export function extractMeal(formdata: FormData): MealType {
-    // const dataToValidate = [
-    //     "title",
-    //     "summary",
-    //     "instructions",
-    //     "creator",
-    //     "creator_email",
-    // ];
-
-    // dataToValidate.every((key) => {
-    //     if (isInvalidText(getString(key, formdata))) {
-    //         throw new Error(`${key} is required`);
-    //     }
-    // });
-
     return {
         title: getString("title", formdata),
         summary: getString("summary", formdata),
