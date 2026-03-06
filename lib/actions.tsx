@@ -18,14 +18,23 @@ export async function shareMeal(
         return { message: "Invalid image" };
     }
 
-    if (
-        isInvalidText(meal.title) ||
-        isInvalidText(meal.summary) ||
-        isInvalidText(meal.instructions) ||
-        isInvalidText(meal.creator) ||
-        isInvalidText(meal.creator_email)
-    ) {
-        return { message: "Invalid input" };
+    const invalidMessages: string[] = [];
+
+    if (isInvalidText(meal.title)) {
+        invalidMessages.push("Invalid title");
+    }
+    if (isInvalidText(meal.summary)) {
+        invalidMessages.push("Invalid summary");
+    }
+    if (isInvalidText(meal.instructions)) {
+        invalidMessages.push("Invalid instructions");
+    }
+    if (isInvalidText(meal.creator_email)) {
+        invalidMessages.push("Invalid email");
+    }
+
+    if (invalidMessages.length > 0) {
+        return { message: invalidMessages.join(", ") };
     }
 
     await saveMeal(meal);
