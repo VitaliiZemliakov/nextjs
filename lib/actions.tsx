@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { extractMeal, isInvalidText } from "./meal-utils";
 import { saveMeal } from "./meals";
+import { revalidatePath } from "next/cache";
 
 export interface ActionState {
     message: string | null;
@@ -38,6 +39,6 @@ export async function shareMeal(
     }
 
     await saveMeal(meal);
-
+    revalidatePath("/meals");
     redirect("/meals");
 }
