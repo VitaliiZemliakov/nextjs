@@ -1,6 +1,7 @@
 export const DUMMY_NEWS = [
     {
         id: "n1",
+        category: "news",
         slug: "will-ai-replace-humans",
         title: "Will AI Replace Humans?",
         image: "ai-robot.jpg",
@@ -10,6 +11,7 @@ export const DUMMY_NEWS = [
     },
     {
         id: "n2",
+        category: "news",
         slug: "beaver-plague",
         title: "A Plague of Beavers",
         image: "beaver.jpg",
@@ -19,6 +21,7 @@ export const DUMMY_NEWS = [
     },
     {
         id: "n3",
+        category: "news",
         slug: "couple-cooking",
         title: "Spend more time together!",
         image: "couple-cooking.jpg",
@@ -28,6 +31,7 @@ export const DUMMY_NEWS = [
     },
     {
         id: "n4",
+        category: "news",
         slug: "hiking",
         title: "Hiking is the best!",
         image: "hiking.jpg",
@@ -37,6 +41,7 @@ export const DUMMY_NEWS = [
     },
     {
         id: "n5",
+        category: "news",
         slug: "landscape",
         title: "The beauty of landscape",
         image: "landscape.jpg",
@@ -45,3 +50,9 @@ export const DUMMY_NEWS = [
             "Landscape photography is a great way to capture the beauty of nature. It is also a great way to get outside and enjoy the great outdoors. So what are you waiting for? Get out there and start taking some pictures!",
     },
 ];
+
+export const CATEGORY_NEWS = "news";
+
+export const PUBLIC_IMAGE_PATH = "/images/";
+
+export const PUBLICK_IMAGE_PATH_CATEGORY_NEWS = "/images/news/";
