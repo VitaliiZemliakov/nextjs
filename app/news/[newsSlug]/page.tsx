@@ -1,17 +1,21 @@
-type ParamProps = {
-    params: Promise<{ newsSlug: string }>;
-};
-
-export async function generateMetadata({ params }: ParamProps) {
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ newSlug: string }>;
+}) {
     const slug = await params;
 
     return {
-        title: `Details - ${slug.newsSlug}`,
-        description: `This is the details page for ${slug.newsSlug}`,
+        title: `Details - ${slug.newSlug}`,
+        description: `This is the details page for ${slug.newSlug}`,
     };
 }
 
-export default async function NewsSlug({ params }: ParamProps) {
+export default async function NewsSlug({
+    params,
+}: {
+    params: Promise<{ newsSlug: string }>;
+}) {
     const { newsSlug } = await params;
 
     console.log("News Slug:", newsSlug);
