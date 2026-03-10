@@ -18,8 +18,6 @@ export default async function NewsSlug({
 }) {
     const { newsSlug } = await params;
 
-    console.log("News Slug:", newsSlug);
-
     return (
         <div>
             <h1>News Detail: {newsSlug}</h1>
