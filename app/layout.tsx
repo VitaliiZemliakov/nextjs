@@ -15,8 +15,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <MainHeader data={dataRoutes} />
-                {children}
+                <div id="page">
+                    <MainHeader data={dataRoutes} />
+                    {children}
+                </div>
             </body>
         </html>
     );

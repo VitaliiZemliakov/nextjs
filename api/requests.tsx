@@ -12,10 +12,9 @@ export const dataHeaderNews: RouteItem[] = [
 export const dataRoutes: RouteItem[] = [
     { title: "Home", url: "/" },
     { title: "News", url: "/news" },
-    // { title: "Contact", url: "/contact" },
 ];
 
-function delayDataHeader(data: RouteItem[], time = 2000): Promise<RouteItem[]> {
+function delayDataHeader(data: RouteItem[], time = 1000): Promise<RouteItem[]> {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             try {

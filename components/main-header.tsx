@@ -1,12 +1,18 @@
 import { getNewsData, RouteItem } from "@/api/requests";
 import Link from "next/link";
 
-export async function MainHeader({ data }: { data: RouteItem[] }) {
+export async function MainHeader({
+    data,
+    classApplied = "",
+}: {
+    data: RouteItem[];
+    classApplied?: string;
+}) {
     const newsData = await getNewsData(data);
 
     return (
         <header>
-            <ul>
+            <ul className={classApplied}>
                 {newsData.map((item, index) => {
                     return (
                         <li key={index}>
