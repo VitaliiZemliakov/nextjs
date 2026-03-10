@@ -1,20 +1,25 @@
-type NewsItem = {
+export type RouteItem = {
     title: string;
     url: string;
 };
 
-const dataHeader: NewsItem[] = [
+export const dataHeaderNews: RouteItem[] = [
     { title: "News Title 1", url: "/news/news-title-1" },
     { title: "News Title 2", url: "/news/news-title-2" },
     { title: "News Title 3", url: "/news/news-title-3" },
-    { title: "Home", url: "/" },
 ];
 
-function delayDataHeader(time = 2000): Promise<NewsItem[]> {
+export const dataRoutes: RouteItem[] = [
+    { title: "Home", url: "/" },
+    { title: "News", url: "/news" },
+    // { title: "Contact", url: "/contact" },
+];
+
+function delayDataHeader(data: RouteItem[], time = 2000): Promise<RouteItem[]> {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             try {
-                resolve(dataHeader);
+                resolve(data);
             } catch (error) {
                 reject(error);
             }
@@ -22,6 +27,6 @@ function delayDataHeader(time = 2000): Promise<NewsItem[]> {
     });
 }
 
-export async function getNewsData(): Promise<NewsItem[]> {
-    return await delayDataHeader();
+export async function getNewsData(data: RouteItem[]): Promise<RouteItem[]> {
+    return await delayDataHeader(data);
 }
