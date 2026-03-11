@@ -28,8 +28,8 @@ export async function MainHeader({
                                     <Image
                                         src={imagePath}
                                         alt={item.title}
-                                        width={100}
-                                        height={100}
+                                        width={300}
+                                        height={300}
                                     />
                                     <span>{item.title}</span>
                                 </Link>

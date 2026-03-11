@@ -1,6 +1,7 @@
 import { DUMMY_NEWS } from "@/api/dummy-news";
 import GoBackBtn from "@/components/go-back-btn";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({
     params,
@@ -23,6 +24,10 @@ export default async function NewsSlug({
     const { newsSlug } = await params;
 
     const slugDetails = DUMMY_NEWS.find((news) => news.slug === newsSlug);
+
+    if (!slugDetails) {
+        return notFound();
+    }
 
     const imagePath = `/images/${slugDetails?.category}/${slugDetails?.image}`;
     const imageAlt = slugDetails ? slugDetails.title : "News Image";
