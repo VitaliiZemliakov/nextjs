@@ -1,3 +1,6 @@
+import { DUMMY_NEWS } from "@/api/dummy-news";
+import Image from "next/image";
+
 export async function generateMetadata({
     params,
 }: {
@@ -18,9 +21,17 @@ export default async function NewsSlug({
 }) {
     const { newsSlug } = await params;
 
+    const slugDetails = DUMMY_NEWS.find((news) => news.slug === newsSlug);
+
+    const imagePath = `/images/${slugDetails?.category}/${slugDetails?.image}`;
+    const imageAlt = slugDetails ? slugDetails.title : "News Image";
+
     return (
-        <div>
+        <div className="flex flex-col">
             <h1>News Detail: {newsSlug}</h1>
+            <Image src={imagePath} alt={imageAlt} width={600} height={400} />
+            <data>{slugDetails?.date}</data>
+            <p>{slugDetails?.content}</p>
         </div>
     );
 }
