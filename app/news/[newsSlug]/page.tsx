@@ -1,4 +1,5 @@
 import { DUMMY_NEWS } from "@/api/dummy-news";
+import GoBackBtn from "@/components/go-back-btn";
 import Image from "next/image";
 
 export async function generateMetadata({
@@ -32,6 +33,7 @@ export default async function NewsSlug({
             <Image src={imagePath} alt={imageAlt} width={600} height={400} />
             <data>{slugDetails?.date}</data>
             <p>{slugDetails?.content}</p>
+            <GoBackBtn />
         </div>
     );
 }

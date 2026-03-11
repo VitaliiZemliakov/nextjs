@@ -5,7 +5,7 @@ import { MainHeaderSuspensed } from "@/components/main-header";
 export default function News() {
     return (
         <div>
-            <h1>News Page</h1>
+            <h2 className="text-4xl">News Page</h2>
             <MainHeaderSuspensed
                 data={DUMMY_NEWS}
                 classApplied="news-list"
