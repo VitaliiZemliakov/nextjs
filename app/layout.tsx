@@ -1,4 +1,4 @@
-import { MainHeader } from "@/components/main-header";
+import { MainHeaderSuspensed } from "@/components/main-header";
 import "./globals.css";
 import { dataRoutes } from "@/api/requests";
 
@@ -16,7 +16,7 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <div id="page">
-                    <MainHeader data={dataRoutes} />
+                    <MainHeaderSuspensed data={dataRoutes} />
                     {children}
                 </div>
             </body>

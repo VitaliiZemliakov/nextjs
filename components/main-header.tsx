@@ -2,6 +2,7 @@ import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
 import { getNewsData, RouteItem } from "@/api/requests";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export async function MainHeader({
     data,
@@ -44,5 +45,23 @@ export async function MainHeader({
                 })}
             </ul>
         </header>
+    );
+}
+
+export function MainHeaderSuspensed({
+    data,
+    classApplied = "",
+    fallBack,
+}: {
+    data: RouteItem[];
+    classApplied?: string;
+    fallBack?: React.ReactNode;
+}) {
+    const fallBackInit = <div>Loading...</div>;
+
+    return (
+        <Suspense fallback={fallBackInit || fallBack}>
+            <MainHeader data={data} classApplied={classApplied} />
+        </Suspense>
     );
 }
