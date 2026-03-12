@@ -1,7 +1,3 @@
-// import { getNewsForYear } from "@/api/news";
-// import { RouteItem } from "@/api/requests";
-// import { MainHeaderSuspensed as NewsList } from "@/components/main-header";
-
 import { getAvailableNewsYears } from "@/api/news";
 import Link from "next/link";
 
