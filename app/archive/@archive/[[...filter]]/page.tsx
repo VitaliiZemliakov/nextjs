@@ -1,10 +1,21 @@
+// import { getNewsForYear } from "@/api/news";
+// import { RouteItem } from "@/api/requests";
+// import { MainHeaderSuspensed as NewsList } from "@/components/main-header";
+
 import { getAvailableNewsYears } from "@/api/news";
 import Link from "next/link";
 
-export default function ArchivePage() {
+type Params = Promise<{ filter: [string] }>;
+
+export default async function FilteredNewsPage(
+    { params }: { params: Params }
+) {
+    const filter = await params;
     const links: number[] = getAvailableNewsYears();
 
-    return (
+    console.log(filter);
+
+       return (
         <header id="archive-header">
             <nav>
                 <ul>
@@ -17,4 +28,8 @@ export default function ArchivePage() {
             </nav>
         </header>
     );
+
+    // const news: RouteItem[] = getNewsForYear(filter);
+
+    // return <NewsList data={news} />;
 }
