@@ -1,7 +1,13 @@
+import { getLatestNews, NewsItem } from "@/api/news";
+import { MainHeaderSuspensed as LatestNews } from "@/components/main-header";
+
 export default function LatestDefault() {
+    const latestNews: NewsItem[] = getLatestNews();
+
     return (
-        <div>
-            <h2>Latest Default page</h2>
-        </div>
+        <header id="archive-header">
+            <h1>Latest News</h1>
+            <LatestNews data={latestNews} />
+        </header>
     );
 }

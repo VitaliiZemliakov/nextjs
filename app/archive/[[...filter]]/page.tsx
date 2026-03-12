@@ -24,8 +24,4 @@ export default async function FilteredNewsPage(
             </nav>
         </header>
     );
-
-    // const news: RouteItem[] = getNewsForYear(filter);
-
-    // return <NewsList data={news} />;
 }
