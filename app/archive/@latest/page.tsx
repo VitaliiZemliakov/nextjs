@@ -1,21 +1,13 @@
-import { getAvailableNewsYears } from "@/api/news";
-import Link from "next/link";
+import { getLatestNews, NewsItem } from "@/api/news";
+import { MainHeaderSuspensed as LatestNews } from "@/components/main-header";
 
 export default function Latest() {
-    const links: number[] = getAvailableNewsYears();
+    const latestNews: NewsItem[] = getLatestNews();
 
     return (
         <header id="archive-header">
             <h1>Latest News</h1>
-            <nav>
-                <ul>
-                    {links.map((link) => (
-                        <li key={link}>
-                            <Link href={`/archive/${link}`}>{link}</Link>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            <LatestNews data={latestNews} />
         </header>
     );
 }

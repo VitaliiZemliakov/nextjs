@@ -1,13 +1,13 @@
 import { DUMMY_NEWS } from "@/api/dummy-news";
 
 // infer the news item type from your data
-type NewsItem = (typeof DUMMY_NEWS)[number];
+export type NewsItem = (typeof DUMMY_NEWS)[number];
 
 export function getAllNews() {
     return DUMMY_NEWS;
 }
 
-export function getLatestNews() {
+export function getLatestNews(): NewsItem[] {
     return DUMMY_NEWS.slice(0, 3);
 }
 
