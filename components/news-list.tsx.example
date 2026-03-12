@@ -1,0 +1,10 @@
+// import { RouteItem } from "@/api/requests";
+// import { MainHeaderSuspensed } from "./main-header";
+
+// export default function NewsList(
+//     { news }: { news: RouteItem[] })
+//     {
+//     return (
+//         <MainHeaderSuspensed data={news} />
+//     )
+// }

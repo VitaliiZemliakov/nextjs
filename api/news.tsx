@@ -12,6 +12,7 @@ export function getLatestNews() {
 }
 
 export function getAvailableNewsYears(): number[] {
+    // years - acc, news - current item
     return DUMMY_NEWS.reduce<number[]>((years, news) => {
         const year = new Date(news.date).getFullYear();
         if (!years.includes(year)) {
@@ -22,11 +23,13 @@ export function getAvailableNewsYears(): number[] {
 }
 
 export function getAvailableNewsMonths(year: number | string): number[] {
+    // years - acc, news - current item
     return DUMMY_NEWS.reduce<number[]>((months, news) => {
         const newsYear = new Date(news.date).getFullYear();
         if (newsYear === +year) {
             const month = new Date(news.date).getMonth();
             if (!months.includes(month)) {
+                //we add +1 because getMonth returns 0-11 and we want 1-12
                 months.push(month + 1);
             }
         }
