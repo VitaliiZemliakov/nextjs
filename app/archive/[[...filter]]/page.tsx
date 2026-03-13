@@ -57,6 +57,22 @@ export default async function FilteredNewsPage({ params }: { params: Params }) {
         newsContent = <p>Sorry, no content found for the selected filter.</p>;
     }
 
+    const errorYear =
+        selectedYear && !linksYears.includes(parseInt(selectedYear));
+    const errorMonth =
+        selectedYear &&
+        selectedMonth &&
+        !getAvailableNewsMonths(parseInt(selectedYear)).includes(
+            parseInt(selectedMonth),
+        );
+
+    // Handling not valid urls like /archive/2020/13 or /archive/2020/abc
+    if (errorYear || errorMonth) {
+        throw new Error(
+            "Invalid URL: Year or month not found in available news data.",
+        );
+    }
+
     return (
         <>
             <header id="archive-header">
