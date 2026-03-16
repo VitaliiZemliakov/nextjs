@@ -1,10 +1,7 @@
-'use client';
-
 import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
 import { RouteItem } from "@/api/requests";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import NavLink from "./nav-link";
 
 export default function MainHeaderClient({
     newsData,
@@ -15,21 +12,18 @@ export default function MainHeaderClient({
     classApplied?: string;
     isActiveDisplayed?: boolean;
 }) {
-    const pathname = usePathname();
-
     return (
-        <header className={isActiveDisplayed ? 'main-header' : ''}>
+        <header className={isActiveDisplayed ? "main-header" : ""}>
             <ul className={classApplied}>
                 {newsData.map((item, index) => {
-                    const isActive = pathname === item.slug;
                     // here we check and decide smth
                     if (item.category === "news") {
                         const imagePath = `${PUBLIC_IMAGE_PATH}${item.category}/${item.image}`;
                         const href = `/${item.category}/${item.slug}`;
 
                         return (
-                            <li key={item.id} >
-                                <Link href={href} className={isActive ? "active" : ""}>
+                            <li key={item.id}>
+                                <NavLink href={href}>
                                     <Image
                                         src={imagePath}
                                         alt={item.title}
@@ -37,16 +31,14 @@ export default function MainHeaderClient({
                                         height={300}
                                     />
                                     <span>{item.title}</span>
-                                </Link>
+                                </NavLink>
                             </li>
                         );
                     }
 
                     return (
                         <li key={index}>
-                            <Link href={item.slug} className={isActive ? "active" : ""}>
-                                {item.title}
-                            </Link>
+                            <NavLink href={item.slug}>{item.title}</NavLink>
                         </li>
                     );
                 })}
