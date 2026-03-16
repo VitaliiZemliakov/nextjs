@@ -17,6 +17,7 @@ export const dataHeaderNews: RouteItem[] = [
 export const dataRoutes: RouteItem[] = [
     { title: "Home", slug: "/" },
     { title: "News", slug: "/news" },
+    { title: "Archive", slug: "/archive" },
 ];
 
 function delayDataHeader(data: RouteItem[], time = 1000): Promise<RouteItem[]> {

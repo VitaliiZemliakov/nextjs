@@ -16,7 +16,7 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <div id="page">
-                    <MainHeaderSuspensed data={dataRoutes} />
+                    <MainHeaderSuspensed data={dataRoutes} isActiveDisplayed={true} />
                     {children}
                 </div>
             </body>

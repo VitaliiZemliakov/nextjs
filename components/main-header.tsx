@@ -1,50 +1,24 @@
-import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
 import { getNewsData, RouteItem } from "@/api/requests";
-import Image from "next/image";
-import Link from "next/link";
 import { Suspense } from "react";
+import MainHeaderClient from "./main-header-client";
 
 export async function MainHeader({
-    data,
+    newsData,
     classApplied = "",
+    isActiveDisplayed,
 }: {
-    data: RouteItem[];
+    newsData: RouteItem[];
     classApplied?: string;
+    isActiveDisplayed?: boolean;
 }) {
-    const newsData = await getNewsData(data);
+    const newsDataFromApi = await getNewsData(newsData);
 
     return (
-        <header>
-            <ul className={classApplied}>
-                {newsData.map((item, index) => {
-                    // here we check and decide smth
-                    if (item.category === "news") {
-                        const imagePath = `${PUBLIC_IMAGE_PATH}${item.category}/${item.image}`;
-                        const href = `/${item.category}/${item.slug}`;
-
-                        return (
-                            <li key={item.id}>
-                                <Link href={href}>
-                                    <Image
-                                        src={imagePath}
-                                        alt={item.title}
-                                        width={300}
-                                        height={300}
-                                    />
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        );
-                    }
-
-                    return (
-                        <li key={index}>
-                            <Link href={item.slug}>{item.title}</Link>
-                        </li>
-                    );
-                })}
-            </ul>
-        </header>
+        <MainHeaderClient
+            newsData={newsDataFromApi}
+            classApplied={classApplied}
+            isActiveDisplayed={isActiveDisplayed}
+        />
     );
 }
 
@@ -52,16 +26,22 @@ export function MainHeaderSuspensed({
     data,
     classApplied = "",
     fallBack,
+    isActiveDisplayed,
 }: {
     data: RouteItem[];
     classApplied?: string;
     fallBack?: React.ReactNode;
+    isActiveDisplayed?: boolean;
 }) {
     const fallBackInit = <div>Loading...</div>;
 
     return (
-        <Suspense fallback={fallBackInit || fallBack}>
-            <MainHeader data={data} classApplied={classApplied} />
+        <Suspense fallback={fallBackInit ?? fallBack}>
+            <MainHeader
+                newsData={data}
+                classApplied={classApplied}
+                isActiveDisplayed={isActiveDisplayed}
+            />
         </Suspense>
     );
 }
