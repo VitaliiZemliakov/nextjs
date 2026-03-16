@@ -1,11 +1,13 @@
 import { getNewsData, RouteItem } from "@/api/requests";
 import { Suspense } from "react";
-import MainHeaderClient from "./main-header-client";
+import NavLink from "./nav-link";
+import Image from "next/image";
+import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
 
 export async function MainHeader({
     newsData,
     classApplied = "",
-    isActiveDisplayed,
+    isActiveDisplayed = false,
 }: {
     newsData: RouteItem[];
     classApplied?: string;
@@ -14,11 +16,37 @@ export async function MainHeader({
     const newsDataFromApi = await getNewsData(newsData);
 
     return (
-        <MainHeaderClient
-            newsData={newsDataFromApi}
-            classApplied={classApplied}
-            isActiveDisplayed={isActiveDisplayed}
-        />
+        <header className={isActiveDisplayed ? "main-header" : ""}>
+            <ul className={classApplied}>
+                {newsDataFromApi.map((item, index) => {
+                    // here we check and decide smth
+                    if (item.category === "news") {
+                        const imagePath = `${PUBLIC_IMAGE_PATH}${item.category}/${item.image}`;
+                        const href = `/${item.category}/${item.slug}`;
+
+                        return (
+                            <li key={item.id}>
+                                <NavLink href={href}>
+                                    <Image
+                                        src={imagePath}
+                                        alt={item.title}
+                                        width={300}
+                                        height={300}
+                                    />
+                                    <span>{item.title}</span>
+                                </NavLink>
+                            </li>
+                        );
+                    }
+
+                    return (
+                        <li key={index}>
+                            <NavLink href={item.slug}>{item.title}</NavLink>
+                        </li>
+                    );
+                })}
+            </ul>
+        </header>
     );
 }
 
