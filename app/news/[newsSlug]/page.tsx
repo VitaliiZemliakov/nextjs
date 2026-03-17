@@ -1,6 +1,7 @@
 import { DUMMY_NEWS } from "@/api/dummy-news";
 import GoBackBtn from "@/components/go-back-btn";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -35,7 +36,14 @@ export default async function NewsSlug({
     return (
         <div className="flex flex-col">
             <h1>News Detail: {newsSlug}</h1>
-            <Image src={imagePath} alt={imageAlt} width={600} height={400} />
+            <Link href={`/news/${slugDetails.slug}/image`}>
+                <Image
+                    src={imagePath}
+                    alt={imageAlt}
+                    width={600}
+                    height={400}
+                />
+            </Link>
             <data>{slugDetails?.date}</data>
             <p>{slugDetails?.content}</p>
             <GoBackBtn />
