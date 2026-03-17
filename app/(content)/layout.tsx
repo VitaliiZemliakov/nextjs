@@ -1,6 +1,6 @@
 import { MainHeaderSuspensed } from "@/components/main-header";
 import "../globals.css";
-import { dataRoutes } from "@/api/requests";
+import { dataRoutes } from "@/app/api/requests";
 
 export const metadata = {
     title: "Next.js Page Routing & Rendering",
@@ -16,7 +16,10 @@ export default function RootLayout({
         <html lang="en">
             <body>
                 <div id="page">
-                    <MainHeaderSuspensed data={dataRoutes} isActiveDisplayed={true} />
+                    <MainHeaderSuspensed
+                        data={dataRoutes}
+                        isActiveDisplayed={true}
+                    />
                     {children}
                 </div>
             </body>

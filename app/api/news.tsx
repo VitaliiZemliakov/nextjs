@@ -1,4 +1,4 @@
-import { DUMMY_NEWS } from "@/api/dummy-news";
+import { DUMMY_NEWS } from "@/app/api/dummy-news";
 
 // infer the news item type from your data
 export type NewsItem = (typeof DUMMY_NEWS)[number];

@@ -1,4 +1,4 @@
-import { DUMMY_NEWS } from "@/api/dummy-news";
+import { DUMMY_NEWS } from "@/app/api/dummy-news";
 // import { dataHeaderNews } from "@/api/requests";
 import { MainHeaderSuspensed } from "@/components/main-header";
 

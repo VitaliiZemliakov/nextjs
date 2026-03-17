@@ -1,8 +1,8 @@
-import { getNewsData, RouteItem } from "@/api/requests";
+import { getNewsData, RouteItem } from "@/app/api/requests";
 import { Suspense } from "react";
 import NavLink from "./nav-link";
 import Image from "next/image";
-import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
+import { PUBLIC_IMAGE_PATH } from "@/app/api/dummy-news";
 
 export async function MainHeader({
     newsData,

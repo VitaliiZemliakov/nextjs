@@ -1,4 +1,4 @@
-import { getLatestNews, NewsItem } from "@/api/news";
+import { getLatestNews, NewsItem } from "@/app/api/news";
 import { MainHeaderSuspensed as LatestNews } from "@/components/main-header";
 
 export default function LatestDefault() {

@@ -1,5 +1,5 @@
-import { PUBLIC_IMAGE_PATH } from "@/api/dummy-news";
-import { RouteItem } from "@/api/requests";
+import { PUBLIC_IMAGE_PATH } from "@/app/api/dummy-news";
+import { RouteItem } from "@/app/api/requests";
 import Image from "next/image";
 import NavLink from "./nav-link";
 

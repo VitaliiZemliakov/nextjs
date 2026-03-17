@@ -3,7 +3,7 @@ import {
     getAvailableNewsYears,
     getNewsForYear,
     getNewsForYearAndMonth,
-} from "@/api/news";
+} from "@/app/api/news";
 import Link from "next/link";
 import { MainHeaderSuspensed as NewsList } from "@/components/main-header";
 

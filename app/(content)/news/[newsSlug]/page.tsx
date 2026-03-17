@@ -1,4 +1,4 @@
-import { DUMMY_NEWS } from "@/api/dummy-news";
+import { DUMMY_NEWS } from "@/app/api/dummy-news";
 import GoBackBtn from "@/components/go-back-btn";
 import Image from "next/image";
 import Link from "next/link";
