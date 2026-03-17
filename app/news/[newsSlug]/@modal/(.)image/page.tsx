@@ -1,6 +1,5 @@
 import { DUMMY_NEWS } from "@/api/dummy-news";
-import GoBackBtn from "@/components/go-back-btn";
-import Image from "next/image";
+import ModalDrop from "@/components/modal";
 import { notFound } from "next/navigation";
 
 export default async function InterceptedImagePage({
@@ -19,11 +18,5 @@ export default async function InterceptedImagePage({
     const imagePath = `/images/${newItem.category}/${newItem.image}`;
     const imageAlt = newItem ? newItem.title : "News Image";
 
-    return (
-        <div className="fullscreen-image">
-            <h2>Intercepted</h2>
-            <Image src={imagePath} alt={imageAlt} width={800} height={600} />
-            <GoBackBtn />
-        </div>
-    );
+    return <ModalDrop image={{ src: imagePath, alt: imageAlt }} />;
 }
