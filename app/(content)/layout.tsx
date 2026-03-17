@@ -1,5 +1,5 @@
 import { MainHeaderSuspensed } from "@/components/main-header";
-import "./globals.css";
+import "../globals.css";
 import { dataRoutes } from "@/api/requests";
 
 export const metadata = {
